@@ -7,7 +7,7 @@ pdsnd_github
 ### Description
 This project makes use of Python to explore data related to bike share systems for three major cities in the United States—Chicago, New York City, and Washington. 
 It answers interesting questions about it by computing descriptive statistics. It is interactive allowing the user to filter by city, month and day,
-also allowing the user to scroll through the data.
+also allowing the user to scroll through the data.  Have yet to find any interesting correlations in the data.
 
 ### Files used
 * chicago.csv
@@ -16,8 +16,9 @@ also allowing the user to scroll through the data.
 
 
 ### Credits
-* Udacity, 
-* W3Schools, 
+* Udacity
+* W3Schools 
+* StackOverflow
 * DataCamp
 
 ### Software Required
