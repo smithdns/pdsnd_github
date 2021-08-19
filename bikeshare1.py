@@ -198,6 +198,16 @@ def histogram(df)
 	maxfreq = n.max()
 	# Set a clean upper y-axis limit.
 	plt.ylim(ymax=np.ceil(maxfreq / 10) * 10 if maxfreq % 10 else maxfreq + 10)
+	
+def lineplot(df)
+	ax.plot(t, s)
+
+	ax.set(xlabel='time (s)', ylabel='voltage (mV)',
+		   title='About as simple as it gets, folks')
+	ax.grid()
+
+	fig.savefig("test.png")
+	plt.show()
 
 def main():
     while True:
@@ -210,6 +220,7 @@ def main():
         trip_duration_stats(df)
         user_stats(df)
 		histogram(df)
+		lineplot(df)
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
             break
