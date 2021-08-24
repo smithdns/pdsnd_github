@@ -80,9 +80,3 @@ plt.savefig(dir + 'city' + ".png")
 result['Gender']=result['Gender'].astype('category').cat.codes
 
 result.corr()
-
-#work in progress here
-months = result["month"]
-durations = result["duration"]
-plt.plot(months,durations)
-plt.savefig(dir + 'all' + ".png")

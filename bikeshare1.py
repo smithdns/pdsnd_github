@@ -2,6 +2,7 @@ import time
 import pandas as pd
 import numpy as np
 import datetime as dt
+import math
 
 citydata = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
@@ -76,6 +77,12 @@ def load_data(city, month, day):
     
     days = df['day_of_week'].value_counts()
     print('days',days)
+    
+    if 'Gender' not in df.columns:
+        df['Gender'] = 'Unknown'
+        
+    if 'Birth Year' not in df.columns:
+        df['Birth Year'] = np.nan
     
     # filter by month if applicable
     
@@ -181,33 +188,33 @@ def user_stats(df):
     #df["Birth Year"] = int(df["Birth Year"])
 
     # Display earliest, most recent, and most common year of birth
-    print('Earliest year of birth:',  np.min(df["Birth Year"]))
-    print('Most recent year of birth:',  np.max(df["Birth Year"]))
-    print('Most common year of birth:',  df["Birth Year"].mode()[0])
+    minyob = np.min(df["Birth Year"]);
+    maxyob = np.max(df["Birth Year"]);
+    print('Earliest year of birth:',  minyob)
+    print('Most recent year of birth:',  maxyob)  
+    if ((math.isnan(minyob)) and ( math.isnan(maxyob))):    
+        print('Most common year of birth: cannot be determined')
+    else:
+        print('Most common year of birth:',  df["Birth Year"].mode()[0])
 
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
-def histogram(df)
-	plt.grid(axis='y', alpha=0.75)
-	plt.xlabel('Value')
-	plt.ylabel('Frequency')
-	plt.title('My Very Own Histogram')
-	plt.text(23, 45, r'$\mu=15, b=3$')
-	maxfreq = n.max()
-	# Set a clean upper y-axis limit.
-	plt.ylim(ymax=np.ceil(maxfreq / 10) * 10 if maxfreq % 10 else maxfreq + 10)
-	
-def lineplot(df)
-	ax.plot(t, s)
+def display_data(df):
+    view_data = ''
+    start_loc = 0
+    end_loc = 5
+    while (start_loc <= len(df.index)) and (end_loc <= len(df.index)):
+        view_data = input('\nWould you like to view 5 rows of individual trip data? Enter yes or no\n')        
+        if (view_data == 'no'):
+            break            
+        print(df[start_loc:end_loc])
+        start_loc += 5 
+        end_loc += 5 
+        if (end_loc > len(df.index)):
+            end_loc = len(df.index)
 
-	ax.set(xlabel='time (s)', ylabel='voltage (mV)',
-		   title='About as simple as it gets, folks')
-	ax.grid()
-
-	fig.savefig("test.png")
-	plt.show()
 
 def main():
     while True:
@@ -219,8 +226,8 @@ def main():
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df)
-		histogram(df)
-		lineplot(df)
+        display_data(df)
+
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
             break
