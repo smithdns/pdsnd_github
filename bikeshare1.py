@@ -214,7 +214,16 @@ def display_data(df):
         end_loc += 5 
         if (end_loc > len(df.index)):
             end_loc = len(df.index)
+			
+def lineplot(df)
+	ax.plot(t, s)
 
+	ax.set(xlabel='time (s)', ylabel='voltage (mV)',
+		   title='About as simple as it gets, folks')
+	ax.grid()
+
+	fig.savefig("test.png")
+	plt.show()
 
 def main():
     while True:
@@ -226,6 +235,7 @@ def main():
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df)
+		lineplot(df)
         display_data(df)
 
         restart = input('\nWould you like to restart? Enter yes or no.\n')
