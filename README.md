@@ -25,8 +25,11 @@ also allowing the user to scroll through the data.  Have yet to find any interes
 Python 3, NumPy, and pandas installed using Anaconda
 
 
-#### Log'
-There were several suggestions by the reviewer-stay tuned
+### Log
+There were several suggestions by the reviewer-stay tuned.  I hope I have time to try them.
+
+### Bugs
+The new feautures are bogus
 
 
 
